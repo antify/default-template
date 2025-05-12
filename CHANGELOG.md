@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/antify/default-template/compare/v0.0.3...v0.0.4) (2025-05-12)
+
+
+### Bug Fixes
+
+* Fix wrong export notation ([c2ebc77](https://github.com/antify/default-template/commit/c2ebc77b8c8675132981e81cf8da036ddddcc43c))
+
 ### [0.0.3](https://github.com/antify/default-template/compare/v0.0.2...v0.0.3) (2025-05-12)
 
 ### [0.0.2](https://github.com/antify/default-template/compare/v0.0.1...v0.0.2) (2025-05-12)
