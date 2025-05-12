@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/antify/default-template/compare/v0.0.7...v0.0.8) (2025-05-12)
+
+
+### Features
+
+* Bump @antify/ui to 3.1.2 ([a5a0791](https://github.com/antify/default-template/commit/a5a0791f39973eda89ad029845857cb8c23e3da9))
+
 ### [0.0.7](https://github.com/antify/default-template/compare/v0.0.6...v0.0.7) (2025-05-12)
 
 ### [0.0.6](https://github.com/antify/default-template/compare/v0.0.5...v0.0.6) (2025-05-12)
