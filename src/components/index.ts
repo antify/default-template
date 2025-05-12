@@ -18,7 +18,7 @@ import AntCrudDetailNav from './crud/AntCrudDetailNav.vue';
 import AntCrudTableFilter from './crud/AntCrudTableFilter.vue';
 import AntCrudTableNav from './crud/AntCrudTableNav.vue';
 
-export default {
+export {
   AntActionButton,
   AntCreateButton,
   AntDeleteButton,
