@@ -6,9 +6,6 @@ import {
 import {
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 defineEmits([
   'click',
@@ -26,22 +23,6 @@ withDefaults(defineProps<{
 }>(), {
   iconVariant: false,
   canEdit: true,
-});
-
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      edit: 'Bearbeiten',
-      noPermission: 'Sie haben keine Berechtigung um Einträge zu bearbeiten.<br> Bitte kontaktieren Sie ihren Administrator',
-    },
-    en: {
-      edit: 'Edit',
-      noPermission: 'You have no permission to edit entries.<br> Please contact your administrator.',
-    },
-  },
 });
 </script>
 
@@ -65,11 +46,13 @@ const {
       v-if="!iconVariant"
       #default
     >
-      {{ t('edit') }}
+      Bearbeiten
     </template>
 
     <template #invalidPermissionTooltipContent>
-      <div v-html=" t('noPermission')" />
+      <div>
+        Du hast keine Berechtigung um Einträge zu bearbeiten.<br> Bitte kontaktiere deinen Administrator
+      </div>
     </template>
   </AntActionButton>
 </template>

@@ -7,9 +7,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import AntSaveAndNewButton from '../buttons/AntSaveAndNewButton.vue';
 import AntSaveButton from '../buttons/AntSaveButton.vue';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 defineEmits([
   'back',
@@ -24,20 +21,6 @@ withDefaults(defineProps<{
   disabled: false,
   skeleton: false,
   canSave: true,
-});
-
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      back: 'Zurück',
-    },
-    en: {
-      back: 'Back',
-    },
-  },
 });
 </script>
 
@@ -56,7 +39,7 @@ const {
           :skeleton="skeleton"
           @click="$emit('back')"
         >
-          {{ t('back') }}
+          Zurück
         </AntButton>
       </slot>
     </div>

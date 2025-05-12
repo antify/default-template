@@ -6,9 +6,6 @@ import {
 import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 defineEmits([
   'click',
@@ -26,22 +23,6 @@ withDefaults(defineProps<{
 }>(), {
   iconVariant: false,
   canDelete: true,
-});
-
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      delete: 'Löschen',
-      noPermission: 'Sie haben keine Berechtigung um Einträge zu löschen.<br> Bitte kontaktieren Sie ihren Administrator',
-    },
-    en: {
-      delete: 'Delete',
-      noPermission: 'You have no permission to delete entries.<br> Please contact your administrator.',
-    },
-  },
 });
 </script>
 
@@ -65,11 +46,13 @@ const {
       v-if="!iconVariant"
       #default
     >
-      {{ t('delete') }}
+      Löschen
     </template>
 
     <template #invalidPermissionTooltipContent>
-      <div v-html=" t('noPermission')" />
+      <div>
+        Du hast keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktiere deinen Administrator
+      </div>
     </template>
   </AntActionButton>
 </template>

@@ -2,7 +2,7 @@ import {
   type Meta, type StoryObj,
 } from '@storybook/vue3';
 import AntDeleteDialog from '../AntDeleteDialog.vue';
-import {AntButton} from '@antify/ui';
+import AntDeleteButton from '../../buttons/AntDeleteButton.vue';
 
 const meta: Meta<typeof AntDeleteDialog> = {
   title: 'Components/Dialogs/Delete Dialog',
@@ -23,7 +23,7 @@ export const Docs: Story = {
   render: (args) => ({
     components: {
       AntDeleteDialog,
-      AntButton,
+      AntDeleteButton,
     },
     setup() {
       return {
@@ -32,7 +32,7 @@ export const Docs: Story = {
     },
     template: `
     <div class="h-96">
-      <AntButton @click="() => args.open = true" state="danger">Delete</AntButton>
+      <AntDeleteButton @click="() => args.open = true"/>
 
       <AntDeleteDialog
         v-model:open="args.open"

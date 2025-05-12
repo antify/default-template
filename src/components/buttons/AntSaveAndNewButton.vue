@@ -6,9 +6,6 @@ import {
 import {
   faFloppyDisk, faPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 defineEmits([
   'click',
@@ -26,22 +23,6 @@ withDefaults(defineProps<{
 }>(), {
   iconVariant: false,
   canSave: true,
-});
-
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      saveAndNew: 'Speichern und neu',
-      noPermission: 'Sie haben keine Berechtigung um Einträge zu speichern.<br> Bitte kontaktieren Sie ihren Administrator',
-    },
-    en: {
-      saveAndNew: 'Save and new',
-      noPermission: 'You have no permission to save.<br> Please contact your administrator.',
-    },
-  },
 });
 </script>
 
@@ -67,11 +48,13 @@ const {
       v-if="!iconVariant"
       #default
     >
-      {{ t('saveAndNew') }}
+      Speichern und neu
     </template>
 
     <template #invalidPermissionTooltipContent>
-      <div v-html=" t('noPermission')" />
+      <div>
+        Du hast keine Berechtigung um Einträge zu speichern.<br> Bitte kontaktiere deinen Administrator
+      </div>
     </template>
   </AntActionButton>
 </template>

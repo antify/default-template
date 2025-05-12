@@ -6,9 +6,6 @@ import {
 import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 defineEmits([
   'click',
@@ -26,22 +23,6 @@ withDefaults(defineProps<{
 }>(), {
   iconVariant: false,
   canCreate: true,
-});
-
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      create: 'Erstellen',
-      noPermission: 'Sie haben keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktieren Sie ihren Administrator',
-    },
-    en: {
-      create: 'Create',
-      noPermission: 'You have no permission to create new entries.<br> Please contact your administrator.',
-    },
-  },
 });
 </script>
 
@@ -65,11 +46,13 @@ const {
       v-if="!iconVariant"
       #default
     >
-      {{ t('create') }}
+      Erstellen
     </template>
 
     <template #invalidPermissionTooltipContent>
-      <div v-html=" t('noPermission')" />
+      <div>
+        Du hast keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktiere deinen Administrator
+      </div>
     </template>
   </AntActionButton>
 </template>

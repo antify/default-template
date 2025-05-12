@@ -16,9 +16,6 @@ import {
   AntSearch,
   State, Grouped, Position,
 } from '@antify/ui';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 const props = withDefaults(defineProps<{
   fullWidth?: boolean;
@@ -45,20 +42,6 @@ const emit = defineEmits([
 ]);
 const router = useRouter();
 const route = useRoute();
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      search: 'Suche',
-    },
-    en: {
-      search: 'Search',
-    },
-  },
-});
-
 const showDropdown = ref(false);
 const _fullWidth = ref(props.fullWidth);
 const search = computed({
@@ -106,7 +89,7 @@ watch(() => props.fullWidth, (val) => {
             v-if="showSearch"
             v-model="search"
             :skeleton="skeleton"
-            :placeholder="searchPlaceholderText || t('search')"
+            :placeholder="searchPlaceholderText || 'Suche'"
           />
         </slot>
       </div>

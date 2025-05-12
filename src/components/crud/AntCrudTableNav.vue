@@ -16,9 +16,6 @@ import {
   AntSkeleton,
   type SelectOption,
 } from '@antify/ui';
-import {
-  useI18n,
-} from 'vue-i18n';
 
 const emit = defineEmits([
   'changeItemsPerPage',
@@ -46,21 +43,6 @@ const props = withDefaults(
     skeleton: false,
   },
 );
-const {
-  t,
-} = useI18n({
-  useScope: 'local',
-  messages: {
-    de: {
-      itemsPerPage: 'Einträge pro Seite',
-      of: 'von',
-    },
-    en: {
-      itemsPerPage: 'Items per page',
-      of: 'of',
-    },
-  },
-});
 
 const route = useRoute();
 const router = useRouter();
@@ -140,7 +122,7 @@ watch(() => props.fullWidth, (val) => {
             rounded
             absolute
           />
-          {{ t('itemsPerPage') }}
+          Einträge pro Seite
         </span>
 
         <AntSelect
@@ -161,7 +143,7 @@ watch(() => props.fullWidth, (val) => {
           />
 
           <span class="font-medium">{{ fromItems }} - {{ toItems }}</span>
-          <span>{{ t('of') }}</span>
+          <span>von</span>
           <span
             class="font-medium"
             data-e2e="total-items"
