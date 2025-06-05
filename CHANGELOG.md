@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/antify/default-template/compare/v0.0.9...v0.0.10) (2025-06-05)
+
+
+### Bug Fixes
+
+* Emit data e2e props correctly ([d7a4a0c](https://github.com/antify/default-template/commit/d7a4a0c028740fe5b15c8da98f2442228c97a8e0))
+
 ### [0.0.9](https://github.com/antify/default-template/compare/v0.0.8...v0.0.9) (2025-06-05)
 
 
