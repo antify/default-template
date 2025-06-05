@@ -34,11 +34,13 @@ const props = withDefaults(defineProps<{
   tooltipState?: InputState;
   tooltipDelay?: number;
   submit?: boolean;
+  dataE2e?: string;
 }>(), {
   state: State.primary,
   hasPermission: true,
   filled: true,
   submit: false,
+  dataE2e: 'action-button',
 });
 const slots = useSlots();
 const hasTooltip = computed(() => !props.skeleton && !props.disabled && props.hasPermission && hasSlotContent(slots['tooltipContent']));
@@ -60,7 +62,7 @@ const hasPermissionTooltip = computed(() => !props.skeleton && !props.disabled &
     :tooltip-state="hasPermissionTooltip ? InputState.info : tooltipState"
     :tooltip-delay="hasPermissionTooltip ? 300 : tooltipDelay"
     :submit="submit"
-    data-e2e="action-button"
+    :data-e2e="dataE2e"
     @click="$emit('click')"
     @blur="$emit('blur')"
   >
