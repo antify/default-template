@@ -2,7 +2,10 @@
 import {
   AntDialog,
   InputState,
+  AntButton,
+  State,
 } from '@antify/ui';
+import AntDeleteButton from "../buttons/AntDeleteButton.vue";
 import {
   useVModel,
 } from '@vueuse/core';
@@ -17,6 +20,16 @@ const props = defineProps<{
   entity: string;
 }>();
 const _open = useVModel(props, 'open', emit);
+
+function closeDialog() {
+  emit('update:open', false);
+  emit('close');
+}
+
+function confirmDialog() {
+  emit('update:open', false);
+  emit('confirm');
+}
 </script>
 
 <template>
@@ -24,14 +37,31 @@ const _open = useVModel(props, 'open', emit);
     v-model:open="_open"
     :state="InputState.danger"
     title="Löschen"
-    confirm-text="Löschen"
-    cancel-text="Abbrechen"
     data-e2e="delete-dialog"
-    @confirm="() => $emit('confirm')"
     @close="() => $emit('close')"
   >
     <div>
       Möchtest du wirklich <span class="font-semibold">{{ entity }}</span> löschen?
     </div>
+
+    <template #footer>
+      <div
+        class="bg-base-100 p-2 gap-2 text-for-white-bg-font flex w-full justify-end"
+      >
+          <AntButton
+            :state="State.base"
+            @click="closeDialog"
+          >
+            Abbrechen
+          </AntButton>
+
+          <AntDeleteButton
+            filled
+            @click="confirmDialog"
+          >
+            Löschen
+          </AntDeleteButton>
+      </div>
+    </template>
   </AntDialog>
 </template>
