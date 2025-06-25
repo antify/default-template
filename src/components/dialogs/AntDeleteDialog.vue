@@ -46,7 +46,7 @@ function confirmDialog() {
 
     <template #footer>
       <div
-        class="bg-base-100 p-2 gap-2 text-for-white-bg-font flex w-full justify-end"
+        class="bg-base-100 gap-2 text-for-white-bg-font flex w-full justify-end"
       >
           <AntButton
             :state="State.base"
