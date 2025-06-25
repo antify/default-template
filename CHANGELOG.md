@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.13 (2025-06-25)
+
+
+### Bug Fixes
+
+* **CD:** Fix executing not existing script ([625ac00](https://github.com/antify/default-template/commit/625ac000255461e158ffdeef105d6e79b55eefc5))
+
 ### [0.0.12](https://github.com/antify/default-template/compare/v0.0.11...v0.0.12) (2025-06-24)
 
 ### [0.0.11](https://github.com/antify/default-template/compare/v0.0.10...v0.0.11) (2025-06-05)
