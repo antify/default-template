@@ -92,7 +92,7 @@ const toItems = computed(() => {
 
   return itemsPerPage.value * page.value;
 });
-const pages = computed(() => Math.ceil(props.count / itemsPerPage.value));
+const pages = computed(() => Math.ceil(props.count / itemsPerPage.value) || 1) ;
 const _fullWidth = ref(props.fullWidth);
 
 watch(() => props.fullWidth, (val) => {
