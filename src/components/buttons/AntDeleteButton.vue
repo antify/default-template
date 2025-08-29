@@ -51,7 +51,7 @@ withDefaults(defineProps<{
 
     <template #invalidPermissionTooltipContent>
       <div>
-        Du hast keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktiere deinen Administrator
+        Du hast keine Berechtigung um Einträge zu löschen.<br> Bitte kontaktiere deinen Administrator
       </div>
     </template>
   </AntActionButton>
