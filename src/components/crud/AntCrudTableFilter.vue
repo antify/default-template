@@ -98,6 +98,7 @@ watch(() => props.fullWidth, (val) => {
         v-if="showFilter"
         v-model:show-dropdown="showDropdown"
         :position="Position.left"
+        :close-on-click-outside="!showDropdown"
       >
         <div class="flex">
           <AntButton
@@ -123,6 +124,13 @@ watch(() => props.fullWidth, (val) => {
           <slot name="dropdownContent" />
         </template>
       </AntDropdown>
+
+<!--  Temporary solution: Use backlayer instead of on click outside to solve the problem with popover over other popover    -->
+      <div
+        v-if="showDropdown"
+        class="inset-0 absolute w-full h-full z-20"
+        @click="showDropdown = false"
+      />
     </div>
 
     <div>
