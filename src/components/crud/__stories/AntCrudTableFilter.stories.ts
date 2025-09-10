@@ -32,6 +32,28 @@ export const Docs: Story = {
   render: (args) => ({
     components: {
       AntCrudTableFilter,
+    },
+    setup() {
+      return {
+        args,
+      };
+    },
+    template: `
+      <div class="dashed">
+        <AntCrudTableFilter
+          v-model:search="args.search"
+          v-bind="args"
+        />
+      </div>
+    `,
+  }),
+  args: {},
+};
+
+export const withDropdownContent: Story = {
+  render: (args) => ({
+    components: {
+      AntCrudTableFilter,
       AntMultiSelect,
     },
     setup() {
