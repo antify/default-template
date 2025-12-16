@@ -44,7 +44,7 @@ const props = withDefaults(defineProps<{
 });
 const slots = useSlots();
 const hasTooltip = computed(() => !props.skeleton && !props.disabled && props.hasPermission && hasSlotContent(slots['tooltipContent']));
-const hasPermissionTooltip = computed(() => !props.skeleton && !props.disabled && !props.hasPermission && hasSlotContent(slots['invalidPermissionTooltipContent']));
+const hasPermissionTooltip = computed(() => !props.skeleton && !(!props.disabled && props.hasPermission) && hasSlotContent(slots['invalidPermissionTooltipContent']));
 </script>
 
 <template>

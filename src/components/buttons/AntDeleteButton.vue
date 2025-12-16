@@ -20,6 +20,7 @@ withDefaults(defineProps<{
   expanded?: boolean;
   canDelete?: boolean;
   tooltipPosition?: Position;
+  deleteTooltipMessage?: string;
 }>(), {
   iconVariant: false,
   canDelete: true,
@@ -51,7 +52,13 @@ withDefaults(defineProps<{
 
     <template #invalidPermissionTooltipContent>
       <div>
-        Du hast keine Berechtigung um Einträge zu löschen.<br> Bitte kontaktiere deinen Administrator
+        <template v-if="deleteTooltipMessage">
+          {{ deleteTooltipMessage }}
+        </template>
+
+        <template v-else>
+          Du hast keine Berechtigung um Einträge zu löschen.<br> Bitte kontaktiere deinen Administrator
+        </template>
       </div>
     </template>
   </AntActionButton>

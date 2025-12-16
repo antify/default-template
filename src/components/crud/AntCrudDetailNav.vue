@@ -21,6 +21,7 @@ withDefaults(defineProps<{
   canDelete?: boolean;
   showDeleteButton?: boolean;
   skeleton?: boolean;
+  deleteTooltipMessage?: string;
 }>(), {
   tabItems: () => [],
   deleteButtonDisabled: false,
@@ -53,6 +54,7 @@ const dialogOpen = ref(false);
           :disabled="deleteButtonDisabled || !canDelete"
           :skeleton="skeleton"
           :can-delete="canDelete"
+          :delete-tooltip-message="deleteTooltipMessage"
           :invalid-permission-tooltip-position="Position.left"
           @click="() => dialogOpen = true"
         />
