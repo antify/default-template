@@ -6,6 +6,9 @@ import {
   vueRouter,
 } from 'storybook-vue3-router';
 import {
+  useRoute,
+} from 'vue-router'
+import {
   AntMultiSelect
 } from "@antify/ui";
 import {ref} from "vue";
@@ -20,7 +23,12 @@ const meta: Meta<typeof AntCrudTableFilter> = {
   },
   argTypes: {},
   decorators: [
-    vueRouter(),
+    vueRouter([
+      {
+        path: '/',
+        component: AntCrudTableFilter,
+      }
+    ]),
   ],
 };
 
@@ -34,12 +42,19 @@ export const Docs: Story = {
       AntCrudTableFilter,
     },
     setup() {
+      const route = useRoute();
+
       return {
         args,
+        route,
       };
     },
     template: `
       <div class="dashed">
+        <div class="p-2 bg-gray-100 text-xs">
+          <strong>Mock-URL:</strong> {{ route.fullPath }}
+        </div>
+
         <AntCrudTableFilter
           v-model:search="args.search"
           v-bind="args"

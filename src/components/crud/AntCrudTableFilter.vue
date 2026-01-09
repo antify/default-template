@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// TODO:: This component works only with vue-router. Make it work in storybook.
 import AntCreateButton from '../buttons/AntCreateButton.vue';
 import {
   computed, ref, watch,
@@ -45,11 +44,11 @@ const route = useRoute();
 const showDropdown = ref(false);
 const _fullWidth = ref(props.fullWidth);
 const search = computed({
-  get: () => route.query[props.searchQuery] as string || '',
+  get: () => decodeURIComponent(route.query[props.searchQuery] as string || ''),
   set: (value) => {
     const query = {
       ...route.query,
-      [props.searchQuery]: value,
+      [props.searchQuery]: encodeURIComponent(value),
     };
 
     if (!value) {
