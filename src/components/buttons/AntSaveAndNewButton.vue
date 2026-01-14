@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import AntActionButton from './AntActionButton.vue';
 import {
-  Position, Size, Grouped, State,
+  Position, Size, Grouped, State, InputState,
 } from '@antify/ui';
 import {
   faFloppyDisk, faPlus,
@@ -20,6 +20,8 @@ withDefaults(defineProps<{
   expanded?: boolean;
   canSave?: boolean;
   tooltipPosition?: Position;
+  saveTooltipMessage?: string;
+  tooltipState?: InputState;
 }>(), {
   iconVariant: false,
   canSave: true,
@@ -40,6 +42,7 @@ withDefaults(defineProps<{
     :submit="true"
     :has-permission="canSave"
     :tooltip-position="tooltipPosition"
+    :tooltip-state="tooltipState"
     data-e2e="save-and-new-button"
     @click="$emit('click')"
     @blur="$emit('blur')"
@@ -53,7 +56,13 @@ withDefaults(defineProps<{
 
     <template #invalidPermissionTooltipContent>
       <div>
-        Du hast keine Berechtigung um Einträge zu speichern.<br> Bitte kontaktiere deinen Administrator
+        <template v-if="saveTooltipMessage">
+          {{ saveTooltipMessage }}
+        </template>
+
+        <template v-else>
+          Du hast keine Berechtigung um Einträge zu speichern.<br> Bitte kontaktiere deinen Administrator
+        </template>
       </div>
     </template>
   </AntActionButton>

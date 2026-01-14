@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import AntActionButton from './AntActionButton.vue';
 import {
-  Position, Size, Grouped, State,
+  Position, Size, Grouped, State, InputState
 } from '@antify/ui';
 import {
   faTrash,
@@ -21,6 +21,7 @@ withDefaults(defineProps<{
   canDelete?: boolean;
   tooltipPosition?: Position;
   deleteTooltipMessage?: string;
+  tooltipState?: InputState;
 }>(), {
   iconVariant: false,
   canDelete: true,
@@ -39,6 +40,7 @@ withDefaults(defineProps<{
     :expanded="expanded"
     :has-permission="canDelete"
     :tooltip-position="tooltipPosition"
+    :tooltip-state="tooltipState"
     data-e2e="delete-button"
     @click="$emit('click')"
     @blur="$emit('blur')"

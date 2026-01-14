@@ -59,7 +59,7 @@ const hasPermissionTooltip = computed(() => !props.skeleton && !(!props.disabled
     :state="state"
     :filled="filled"
     :tooltip-position="tooltipPosition"
-    :tooltip-state="hasPermissionTooltip ? InputState.info : tooltipState"
+    :tooltip-state="tooltipState"
     :tooltip-delay="hasPermissionTooltip ? 300 : tooltipDelay"
     :submit="submit"
     :data-e2e="dataE2e"

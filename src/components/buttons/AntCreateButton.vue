@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import AntActionButton from './AntActionButton.vue';
 import {
-  Position, Size, Grouped, State,
+  Position, Size, Grouped, State, InputState,
 } from '@antify/ui';
 import {
   faPlus,
@@ -20,6 +20,8 @@ withDefaults(defineProps<{
   expanded?: boolean;
   canCreate?: boolean;
   tooltipPosition?: Position;
+  createTooltipMessage?: string;
+  tooltipState?: InputState;
 }>(), {
   iconVariant: false,
   canCreate: true,
@@ -38,6 +40,7 @@ withDefaults(defineProps<{
     :expanded="expanded"
     :has-permission="canCreate"
     :tooltip-position="tooltipPosition"
+    :tooltip-state="tooltipState"
     data-e2e="create-button"
     @click="$emit('click')"
     @blur="$emit('blur')"
@@ -51,7 +54,13 @@ withDefaults(defineProps<{
 
     <template #invalidPermissionTooltipContent>
       <div>
-        Du hast keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktiere deinen Administrator
+        <template v-if="createTooltipMessage">
+          {{ createTooltipMessage }}
+        </template>
+
+        <template v-else>
+          Du hast keine Berechtigung um Einträge zu erstellen.<br> Bitte kontaktiere deinen Administrator
+        </template>
       </div>
     </template>
   </AntActionButton>

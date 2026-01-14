@@ -3,7 +3,7 @@ import {
   type Meta, type StoryObj,
 } from '@storybook/vue3';
 import {
-  Position, Grouped as _Grouped, Size,
+  Position, Grouped as _Grouped, Size, InputState,
 } from '@antify/ui';
 
 const meta: Meta<typeof AntCreateButton> = {
@@ -32,6 +32,12 @@ const meta: Meta<typeof AntCreateButton> = {
         type: 'select',
       },
       options: Object.values(Position),
+    },
+    tooltipState: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(InputState),
     },
   },
 };
