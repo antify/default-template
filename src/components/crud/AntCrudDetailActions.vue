@@ -7,6 +7,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import AntSaveAndNewButton from '../buttons/AntSaveAndNewButton.vue';
 import AntSaveButton from '../buttons/AntSaveButton.vue';
+import {
+  InputState,
+} from '@antify/ui';
 
 defineEmits([
   'back',
@@ -17,6 +20,9 @@ withDefaults(defineProps<{
   disabled?: boolean;
   skeleton?: boolean;
   canSave?: boolean;
+  tooltipState?: InputState;
+  saveTooltipMessage?: string;
+  saveAndNewTooltipMessage?: string;
 }>(), {
   disabled: false,
   skeleton: false,
@@ -51,6 +57,8 @@ withDefaults(defineProps<{
           :skeleton="skeleton"
           :disabled="disabled"
           :can-save="canSave"
+          :save-tooltip-message="saveTooltipMessage"
+          :tooltip-state="tooltipState"
           @click="$emit('save-and-new')"
         />
 
@@ -58,6 +66,8 @@ withDefaults(defineProps<{
           :skeleton="skeleton"
           :disabled="disabled"
           :can-save="canSave"
+          :save-tooltip-message="saveAndNewTooltipMessage"
+          :tooltip-state="tooltipState"
           @click="$emit('save')"
         />
       </slot>
