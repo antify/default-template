@@ -1,7 +1,7 @@
 import {
   type Meta, type StoryObj,
 } from '@storybook/vue3';
-import {AntTabs} from '@antify/ui';
+import {AntTabs, InputState} from '@antify/ui';
 import AntCrudDetailActions from '../AntCrudDetailActions.vue';
 
 const meta: Meta<typeof AntCrudDetailActions> = {
@@ -17,7 +17,14 @@ const meta: Meta<typeof AntCrudDetailActions> = {
       template: '<div class="border border-dashed border-base-300"><story/></div>',
     }),
   ],
-  argTypes: {},
+  argTypes: {
+    tooltipState: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(InputState),
+    },
+  },
 };
 
 export default meta;

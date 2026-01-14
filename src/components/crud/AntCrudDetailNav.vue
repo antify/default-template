@@ -6,7 +6,7 @@ import {
 import {
   type TabItem,
   AntTabs,
-  Position,
+  Position, InputState,
 } from '@antify/ui';
 import AntDeleteDialog from '../dialogs/AntDeleteDialog.vue';
 import AntDeleteButton from '../buttons/AntDeleteButton.vue';
@@ -22,6 +22,7 @@ withDefaults(defineProps<{
   showDeleteButton?: boolean;
   skeleton?: boolean;
   deleteTooltipMessage?: string;
+  tooltipState?: InputState;
 }>(), {
   tabItems: () => [],
   deleteButtonDisabled: false,
@@ -56,6 +57,7 @@ const dialogOpen = ref(false);
           :can-delete="canDelete"
           :delete-tooltip-message="deleteTooltipMessage"
           :invalid-permission-tooltip-position="Position.left"
+          :tooltip-state="tooltipState"
           @click="() => dialogOpen = true"
         />
 

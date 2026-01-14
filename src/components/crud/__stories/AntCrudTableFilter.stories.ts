@@ -9,7 +9,7 @@ import {
   useRoute,
 } from 'vue-router'
 import {
-  AntMultiSelect
+  AntMultiSelect, InputState
 } from "@antify/ui";
 import {ref} from "vue";
 
@@ -21,7 +21,14 @@ const meta: Meta<typeof AntCrudTableFilter> = {
       sort: 'requiredFirst',
     },
   },
-  argTypes: {},
+  argTypes: {
+    tooltipState: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(InputState),
+    },
+  },
   decorators: [
     vueRouter([
       {

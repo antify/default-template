@@ -1,7 +1,7 @@
 import {
   type Meta, type StoryObj,
 } from '@storybook/vue3';
-import {AntTabs} from '@antify/ui';
+import {AntTabs, InputState} from '@antify/ui';
 import AntCrudDetailNav from '../AntCrudDetailNav.vue';
 import {
   vueRouter,
@@ -21,7 +21,14 @@ const meta: Meta<typeof AntCrudDetailNav> = {
     }),
     vueRouter(),
   ],
-  argTypes: {},
+  argTypes: {
+    tooltipState: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(InputState),
+    },
+  },
 };
 
 export default meta;

@@ -13,8 +13,9 @@ import {
   AntDropdown,
   AntButton,
   AntSearch,
-  State, Grouped, Position,
+  State, Grouped, Position, InputState,
 } from '@antify/ui';
+import AntActionButton from "../buttons/AntActionButton.vue";
 
 const props = withDefaults(defineProps<{
   fullWidth?: boolean;
@@ -25,6 +26,8 @@ const props = withDefaults(defineProps<{
   canCreate?: boolean;
   skeleton?: boolean;
   searchPlaceholderText?: string;
+  createTooltipMessage?: string;
+  tooltipState?: InputState;
 }>(), {
   fullWidth: true,
   showFilter: true,
@@ -138,6 +141,8 @@ watch(() => props.fullWidth, (val) => {
           :skeleton="skeleton"
           :can-create="canCreate"
           :invalid-permission-tooltip-position="Position.left"
+          :create-tooltip-message="createTooltipMessage"
+          :tooltip-state="tooltipState"
           @click="() => emit('create')"
         />
       </slot>
