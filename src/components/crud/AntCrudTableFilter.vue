@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<{
   showFilter?: boolean;
   showSearch?: boolean;
   searchQuery?: string;
+  searchAutoFocus?: boolean;
   hasFilter?: boolean;
   canCreate?: boolean;
   skeleton?: boolean;
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<{
   fullWidth: true,
   showFilter: true,
   showSearch: true,
+  searchAutoFocus: true,
   searchQuery: 'search',
   hasFilter: false,
   canCreate: true,
@@ -65,12 +67,21 @@ const search = computed({
     })();
   },
 });
+const searchInputRef = ref<HTMLInputElement | null>(null)
 
 watch(() => props.fullWidth, (val) => {
   setTimeout(() => {
     _fullWidth.value = val;
   }, val ? 250 : 300);
 });
+
+watch(searchInputRef, (val) => {
+  if (!val || !props.searchAutoFocus) {
+    return;
+  }
+
+  val.focus();
+})
 </script>
 
 <template>
@@ -87,6 +98,7 @@ watch(() => props.fullWidth, (val) => {
           <AntSearch
             v-if="showSearch"
             v-model="search"
+            v-model:input-ref="searchInputRef"
             :skeleton="skeleton"
             :placeholder="searchPlaceholderText || 'Suche'"
           />
