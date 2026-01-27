@@ -1,4 +1,4 @@
-@import '../../src/index.css';
+@import '../../../src/runtime/index.css';
 
 /** Used for placeholder slots */
 .slot {

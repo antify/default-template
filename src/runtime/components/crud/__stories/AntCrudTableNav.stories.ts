@@ -5,6 +5,9 @@ import {
 import {
   vueRouter,
 } from 'storybook-vue3-router';
+import {
+  useRoute,
+} from 'vue-router'
 
 const meta: Meta<typeof AntCrudTableNav> = {
   title: 'Crud/Crud Table Nav',
@@ -34,12 +37,19 @@ export const Docs: Story = {
       AntCrudTableNav,
     },
     setup() {
+      const route = useRoute();
+
       return {
         args,
+        route,
       };
     },
     template: `
       <div class="dashed">
+        <div class="p-2 bg-gray-100 text-xs">
+          <strong>Mock-URL:</strong> {{ route.fullPath }}
+        </div>
+
         <AntCrudTableNav v-bind="args"/>
       </div>
     `,

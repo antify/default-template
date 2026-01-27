@@ -11,10 +11,8 @@ import {
   computed, ref, watch,
 } from 'vue';
 import {
+  AntItemsPerPage,
   AntPagination,
-  AntSelect,
-  AntSkeleton,
-  type SelectOption,
 } from '@antify/ui';
 
 const emit = defineEmits([
@@ -46,19 +44,8 @@ const props = withDefaults(
 
 const route = useRoute();
 const router = useRouter();
-const itemsPerPageOptions = computed(() => props.validItemsPerPage.map(item => ({
-  label: `${item}`,
-  value: item,
-}) as SelectOption));
-const page = computed(() => {
-  const _page = route.query[props.pageQuery] >= 1 ? Number.parseInt(route.query[props.pageQuery]) : 1;
-
-  if (_page <= 0 || _page > pages.value) {
-    return 1;
-  }
-
-  return _page;
-});
+const itemsPerPageOptions = computed(() => props.validItemsPerPage);
+const page = ref(1);
 const itemsPerPage = computed({
   get() {
     return route.query[props.itemsPerPageQuery] ?
@@ -71,6 +58,7 @@ const itemsPerPage = computed({
     };
     query[props.itemsPerPageQuery] = `${val}`;
     delete query[props.pageQuery];
+    page.value = 1;
 
     (async () => {
       await router.push({
@@ -82,24 +70,44 @@ const itemsPerPage = computed({
     })();
   },
 });
-const fromItems = computed(() => (itemsPerPage.value * (page.value - 1)) + 1);
-const toItems = computed(() => {
-  const items = itemsPerPage.value * page.value;
-
-  if (page.value === pages.value && items > props.count) {
-    return props.count;
-  }
-
-  return itemsPerPage.value * page.value;
-});
 const pages = computed(() => Math.ceil(props.count / itemsPerPage.value) || 1) ;
 const _fullWidth = ref(props.fullWidth);
+
+const onChangePage = (val) => {
+  const query = {
+    ...route.query,
+  };
+  query[props.pageQuery] = `${val}`;
+
+  (async () => {
+    await router.push({
+      ...route,
+      query,
+    });
+
+    emit('changePage', val)
+  })();
+}
 
 watch(() => props.fullWidth, (val) => {
   setTimeout(() => {
     _fullWidth.value = val;
   }, val ? 300 : 200);
 });
+
+watch(() => route.query, () => {
+  if (route.query[props.pageQuery]) {
+    const _page = route.query[props.pageQuery] >= 1 ? Number.parseInt(route.query[props.pageQuery]) : 1;
+
+    if (_page <= 0 || _page > pages.value) {
+      return 1;
+    }
+
+    page.value = _page;
+  }
+}, {
+  deep: true,
+})
 </script>
 
 <template>
@@ -116,47 +124,21 @@ watch(() => props.fullWidth, (val) => {
         class="flex gap-2 items-center text-for-white-bg-font text-sm"
         data-e2e="items-per-page"
       >
-        <span class="relative">
-          <AntSkeleton
-            v-if="skeleton"
-            rounded
-            absolute
-          />
-          Einträge pro Seite
-        </span>
-
-        <AntSelect
+        <AntItemsPerPage
           v-model="itemsPerPage"
-          :options="itemsPerPageOptions"
+          :items-per-page-options="itemsPerPageOptions"
+          :amount-of-items="count"
+          :selected-page="page"
           :skeleton="skeleton"
-          :expanded="false"
         />
-
-        <div
-          v-if="count !== null"
-          class="flex gap-1 relative"
-        >
-          <AntSkeleton
-            v-if="skeleton"
-            rounded
-            absolute
-          />
-
-          <span class="font-medium">{{ fromItems }} - {{ toItems }}</span>
-          <span>von</span>
-          <span
-            class="font-medium"
-            data-e2e="total-items"
-          >{{ count }}</span>
-        </div>
       </div>
 
       <AntPagination
+        v-model="page"
         :pages="pages"
-        :page-query="pageQuery"
         :skeleton="skeleton"
         :light-version="!_fullWidth"
-        @input="(val) => emit('changePage', val)"
+        @update:model-value="(val) => onChangePage(val)"
       />
     </div>
   </div>
