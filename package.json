@@ -13,25 +13,11 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "style": "./dist/index.css",
-      "require": "./dist/index.js"
+      "types": "./dist/module.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "*",
-        "dist/*",
-        "dist/*.d.ts",
-        "dist/*/index.d.ts"
-      ]
-    }
-  },
+  "main": "./dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -39,6 +25,7 @@
     "@antify/ui": "4.1.24",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@nuxt/kit": "3.16.2",
+    "@tailwindcss/vite": "4.0.7",
     "@vueuse/core": "^13.0.0",
     "vue": "^3.4.29"
   },
@@ -53,7 +40,6 @@
     "@storybook/addon-essentials": "8.6.15",
     "@storybook/vue3": "8.6.15",
     "@stylistic/eslint-plugin": "^2.11.0",
-    "@tailwindcss/vite": "4.0.7",
     "autoprefixer": "^10.4.20",
     "eslint": "8.57.0",
     "eslint-plugin-vue": "^9.32.0",
