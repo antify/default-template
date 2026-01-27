@@ -29,6 +29,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Generate tsconfig
+      run: pnpm dev:prepare
+
     - name: Build project
       run: pnpm build
 
