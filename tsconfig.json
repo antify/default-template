@@ -4,9 +4,6 @@
     "useUnknownInCatchVariables": false,
     "types": ["@types/node"]
   },
-  "include": [
-    "types"
-  ],
   "exclude": [
     "dist",
     "playground"
