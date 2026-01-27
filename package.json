@@ -1,6 +1,6 @@
 {
   "name": "@antify/default-template",
-  "version": "0.0.20",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "build": "nuxt-module-build build",
